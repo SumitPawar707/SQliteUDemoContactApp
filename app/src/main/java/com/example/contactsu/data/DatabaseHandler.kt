@@ -82,4 +82,20 @@ class DatabaseHandler (val context:Context):SQLiteOpenHelper(context,Constants.D
             arrayOf(contact.id.toString()))
     }
 
+    //Deleting COntacts
+    fun deleteCOntact(contact:Contacts){
+        val db=this.writableDatabase
+
+        db.delete(Constants.TABLE_NAME, Constants.KEY_ID+"=?", arrayOf(contact.id.toString()))
+    }
+
+    //Getting count of the records
+    fun getContactCount():Int{
+        val countQuery="SELECT * FROM ${Constants.TABLE_NAME}"
+        val db=this.readableDatabase
+        val cursor = db.rawQuery(countQuery, null)
+
+        return cursor.count
+    }
+
 }

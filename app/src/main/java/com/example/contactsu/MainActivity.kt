@@ -23,26 +23,18 @@ class MainActivity : AppCompatActivity() {
         db.addContacts(Contacts("David","345678"))
         db.addContacts(Contacts("Travis","567890"))
 
-        //Displaying and getting single contact
-        val contact=db.getContact(2)
-        textview.text="Name:${contact.name} \n Phone : ${contact.phoneNumber}"
-
-        //Updating contact
-        val newContact=contact
-        newContact.name = "Rohit"
-        newContact.phoneNumber="4567321"
-        db.updateContact(newContact)
-
-        val updatedContact=db.getContact(2)
-        textview.text="Updated Name:${updatedContact.name} \n Updated Phone: ${updatedContact.phoneNumber}"
+        val contact1=db.getContact(1)
+        val contact2=db.getContact(2)
+        db.deleteCOntact(contact1)
+        db.deleteCOntact(contact2)
 
         //Displaying all the contacts
-//        var contactList=db.getAllContacts()
-//        var data=""
-//
-//        for(contact in contactList){
-//            data += "Name:${contact.name} \n PhoneNumber : ${contact.phoneNumber}"
-//        }
-//        textview.text=data
+        var contactList=db.getAllContacts()
+        var data=""
+
+        for(contact in contactList){
+            data += "Name:${contact.name} \n PhoneNumber : ${contact.phoneNumber}\n\n"
+        }
+        textview.text=data
     }
 }
