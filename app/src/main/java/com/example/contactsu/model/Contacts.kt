@@ -1,5 +1,5 @@
 package com.example.contactsu.model
 
-data class Contacts(var id:Int,var name:String,var phoneNumber:Int){
-    constructor(name: String,phoneNumber: Int) : this(-1,name,phoneNumber)
+data class Contacts(var id:Int,var name:String,var phoneNumber:String){
+    constructor(name: String,phoneNumber: String) : this(-1,name,phoneNumber)
 }
