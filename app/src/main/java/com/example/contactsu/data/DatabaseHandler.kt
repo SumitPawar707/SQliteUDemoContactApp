@@ -26,7 +26,7 @@ class DatabaseHandler (val context:Context):SQLiteOpenHelper(context,Constants.D
   fun addContacts(contact:Contacts){
       val db=this.writableDatabase
       val values = ContentValues()
-      values.put(Constants.KEY_ID, contact.id)
+
       values.put(Constants.KEY_NAME,contact.name)
       values.put(Constants.KEY_PHONE,contact.phoneNumber)
 
@@ -69,5 +69,17 @@ class DatabaseHandler (val context:Context):SQLiteOpenHelper(context,Constants.D
         }
         return Contactlist
    }
+
+    //Updating contact
+    fun updateContact(contact:Contacts):Int{
+        val db=this.writableDatabase
+
+        val values = ContentValues()
+        values.put(Constants.KEY_NAME,contact.name)
+        values.put(Constants.KEY_PHONE,contact.phoneNumber)
+
+        return db.update(Constants.TABLE_NAME,values,Constants.KEY_ID+"=?",
+            arrayOf(contact.id.toString()))
+    }
 
 }
