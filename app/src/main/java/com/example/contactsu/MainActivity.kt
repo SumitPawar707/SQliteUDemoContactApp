@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         db.addContacts(Contacts("David","345678"))
         db.addContacts(Contacts("Travis","567890"))
 
-        val contact1=db.getContact(1)
-        val contact2=db.getContact(2)
-        db.deleteCOntact(contact1)
-        db.deleteCOntact(contact2)
+//        val contact1=db.getContact(1)
+//        val contact2=db.getContact(2)
+//        db.deleteCOntact(contact1)
+//        db.deleteCOntact(contact2)
 
         //Displaying all the contacts
         var contactList=db.getAllContacts()
@@ -36,5 +36,6 @@ class MainActivity : AppCompatActivity() {
             data += "Name:${contact.name} \n PhoneNumber : ${contact.phoneNumber}\n\n"
         }
         textview.text=data
+        textview.append("Number of COntacts: ${db.getContactCount()}")//Getting count of the contacts
     }
 }
